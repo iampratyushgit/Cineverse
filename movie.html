@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineWorld</title>    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -45,7 +46,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, #8b5cf6, #ec4899); /* Gradient background */
+            background: linear-gradient(rgb(0 0 0 / 75%), rgb(255 255 255 / 49%)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGi1RSy2IRsVGoj8GY6X5P2XvC1ntDAyKJuw&s'); /* Gradient background */
+            background-size: cover;
+            background-position: center;
             text-align: center;
             padding: 20px;
         }
@@ -59,7 +62,7 @@
             font-size: 1.5rem;
             max-width: 800px;
             margin-bottom: 40px;
-            color: white;
+            color: rgb(0, 0, 0);
         }
         #get-started-btn {
             background-color: #f59e0b; /* Yellow */
@@ -238,10 +241,11 @@
             margin-bottom: 4px;
         }
         .movie-card-content .rating {
-            font-size: 1rem;
-            color: #fef08a; /* Yellow */
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: yellow;
+            -webkit-text-stroke: 1px black; /* Yellow */
             margin-top: 8px;
-            font-weight: 500;
         }
 
         @media (min-width: 640px) {
@@ -270,10 +274,40 @@
                 padding: 24px;
             }
         }
+        footer {
+            background-color: #1f2937;
+            padding: 24px 0;
+            text-align: center;
+            margin-top: 15px;
+        }
+        footer p {
+            color: #d1d5db;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        footer a {
+            color: #3b82f6; /* Blue */
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        footer a:hover {
+            color: #2563eb; /* Darker blue */
+        }
+
+        .movie-card{
+            position: relative;
+        }
+
+        .rating{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            
+        }
     </style>
 </head>
 <body class="bg-gray-900">
-    <div id="landing-page" class="min-h-screen flex flex-col justify-center items-center">
+    <div id="landing-page" class="min-h-screen flex flex-col justify-center items-center">  
         <div class="text-center space-y-6">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">Welcome to CineWorld</h1>
             <p class="text-lg sm:text-xl md:text-2xl max-w-2xl">Explore a universe of movies. Your ultimate destination for films, reviews, and community.</p>
@@ -327,10 +361,11 @@
             <div class="movie-grid">
                 <div class="movie-card">
                     <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ8FFJNBaIXvhEwqXXw40rYYDci8jPlYxWfy9082flliYoZ-SqqZjy0az-G5rIWuSJp2pn7xQ" alt="Oppenheimer">
+                    <svg data-icon-name="favourite" data-style="line" icon_origin_id="21076" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-name="Flat Color" id="favourite" class="icon line" width="48" height="48"><path style="fill: rgb(83, 83, 83); stroke-width: 1; stroke: rgb(0, 0, 0);" d="M20.28,4.74a5.82,5.82,0,0,0-8.28,0,5.82,5.82,0,0,0-8.28,0,5.94,5.94,0,0,0,0,8.34l7.57,7.62a1,1,0,0,0,1.42,0l7.57-7.62a5.91,5.91,0,0,0,0-8.34Z" id="primary"></path></svg>
                     <div class="movie-card-content">
                         <h3>Oppenheimer</h3>
                         <p>2023 | Biography, Drama, History</p>
-                        <p class="rating">Rating: 8.4/10</p>
+                        <p class="rating">8.4</p>
                     </div>
                 </div>
                 <div class="movie-card">
@@ -338,7 +373,7 @@
                     <div class="movie-card-content">
                         <h3>Barbie</h3>
                         <p>2023 | Comedy, Fantasy, Romance</p>
-                        <p class="rating">Rating: 7.0/10</p>
+                        <p class="rating">7.0</p>
                     </div>
                 </div>
                 <div class="movie-card">
@@ -346,15 +381,16 @@
                     <div class="movie-card-content">
                         <h3>The Equalizer 3</h3>
                         <p>2023 | Action, Crime, Thriller</p>
-                        <p class="rating">Rating: 6.8/10</p>
+                        <p class="rating">6.8</p>
                     </div>
                 </div>
                 <div class="movie-card">
-                    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQJMdX2PF6iwvapJoPpo9QwLzAk0m8BmCbRpiM8XGP3-ggZPtweOj_N6hPgRNN7u1DzKqB_" alt="The Creator">
+                    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQJMdX2PF6iwvapJoPpo9QwLzAk0m8BmCbRpiM8XGP3-ggZPtweOj_N6hPgRNN7u1DzKqB_" alt="The Creator" >
                     <div class="movie-card-content">
                         <h3>The Creator</h3>
                         <p>2023 | Action, Sci-Fi, Thriller</p>
-                        <p class="rating">Rating: 7.0/10</p>
+                        <p class="rating" >7.0</p>
+                        
                     </div>
                 </div>
                 <div class="movie-card">
@@ -362,7 +398,7 @@
                     <div class="movie-card-content">
                         <h3>Avengers Endgame</h3>
                         <p>2019 | Action, Sci-Fi</p>
-                        <p class="rating">Rating: 8.4/10</p>
+                        <p class="rating">8.4</p>
                     </div>
                 </div>
                 <div class="movie-card">
@@ -370,7 +406,7 @@
                     <div class="movie-card-content">
                         <h3>Avatar</h3>
                         <p>2009 | Action, Sci-Fi</p>
-                        <p class="rating">Rating: 7.9/10</p>
+                        <p class="rating">7.9</p>
                     </div>
                 </div>
                 <div class="movie-card">
@@ -378,7 +414,7 @@
                     <div class="movie-card-content">
                         <h3>Avengers Infinity War</h3>
                         <p>2018 | Action, Sci-Fi</p>
-                        <p class="rating">Rating: 8.4/10</p>
+                        <p class="rating">8.4</p>
                     </div>
                 </div>
                 <div class="movie-card">
@@ -386,11 +422,49 @@
                     <div class="movie-card-content">
                         <h3>Avatar The way of water</h3>
                         <p>2022 | Action, Sci-Fi</p>
-                        <p class="rating">Rating: 7.5/10</p>
+                        <p class="rating">7.5</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg" alt="BatMan The Dark knight">
+                    <div class="movie-card-content">
+                        <h3>BatMan The Dark knight</h3>
+                        <p>2008 | Action, Crime</p>
+                        <p class="rating">9.0</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://i0.wp.com/beforesandafters.com/wp-content/uploads/2022/12/Titanic2.jpg?fit=1200%2C679&ssl=1" alt="Titanic">
+                    <div class="movie-card-content">
+                        <h3>Titanic</h3>
+                        <p>1997 | Romance, Adventure</p>
+                        <p class="rating">7.9</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://i.guim.co.uk/img/media/fbb1974c1ebbb6bf4c4beae0bb3d9cb93901953c/80_0_2400_1440/master/2400.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=ede2b27f1cea7c3be30b938195c0cc5c" alt="Joker">
+                    <div class="movie-card-content">
+                        <h3>Joker</h3>
+                        <p>2019 | Thriller, Crime</p>
+                        <p class="rating">8.3</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://cdn.marvel.com/content/1x/spider-man_lob_crd_01.jpg" alt="Spiderman">
+                    <div class="movie-card-content">
+                        <h3>Spiderman</h3>
+                        <p>2002 | Action, Sci-Fi</p>
+                        <p class="rating">7.4</p>
                     </div>
                 </div>
             </div>
         </main>
+        <footer>
+            <div class="container text-center py-6">
+                <p>&copy; 2023 CineWorld. All rights reserved.</p>
+                <p>Follow us on <a href="#" class="text-blue-500">Facebook</a> and <a href="#" class="text-blue-500">Instagram</a>.</p>
+            </div>
+        </footer>
     </div>
 
     <script>
