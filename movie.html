@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineWorld</title>    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111827; /* Dark background */
+            color: #f9fafb; /* Light text */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .btn {
+            padding: 12px 24px ;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn:hover {
+            transform: translateY(-2px) scale(1.05);
+        }
+        .btn:active {
+            transform: translateY(0) scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #landing-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #8b5cf6, #ec4899); /* Gradient background */
+            text-align: center;
+            padding: 20px;
+        }
+        #landing-page h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: white;
+        }
+        #landing-page p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 40px;
+            color: white;
+        }
+        #get-started-btn {
+            background-color: #f59e0b; /* Yellow */
+            color: #1f2937; /* Dark text */
+        }
+        #get-started-btn:hover {
+            background-color: #d97706;
+        }
+
+        #login-page, #signup-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #374151; /* Dark grey form container */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+        }
+        .form-container h2 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .form-container input {
+            width: 95%;
+            margin-top: 5px;
+            padding: 12px;
+            border-radius: 20px;
+            border: 2px solid #4b5563; /* Darker border */
+            background-color: #4b5563;
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+            outline: none;
+        }
+        .form-container input:focus {
+            border-color: #6b7280; /* Lighter border on focus */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        #login-btn {
+            background-color: #3b82f6; /* Blue */
+            margin-top: 5px;
+            color: white;
+            width: 100%;
+        }
+        #login-btn:hover {
+            background-color: #2563eb;
+        }
+        #signup-btn {
+            background-color: #10b981; /* Green */
+            margin-top: 5px;
+            color: white;
+            width: 100%;
+        }
+        #signup-btn:hover {
+            background-color: #059669;
+        }
+        .form-container p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            text-align: center;
+        }
+        .form-container a {
+            color: #6ee7b7; /* Light green */
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .form-container a:hover {
+            color: #14b8a6; /* Darker green */
+        }
+
+        #home-page {
+            min-height: 100vh;
+            background-color: #111827;
+        }
+
+        #home-page h1:hover{
+            color: #fbbf24; /* Yellow */
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        header {
+            background-color: #1f2937;
+            padding: 16px 0;
+            border-bottom: 1px solid #374151;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+        header nav {
+            display: flex;
+            gap: 24px;
+        }
+        header nav a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.2s ease;
+        }
+        header nav a:hover {
+            color: white;
+        }
+        #logout-btn {
+            background-color: #ef4444; /* Red */
+            color: white;
+        }
+        #logout-btn:hover {
+            background-color: #dc2626;
+            text-decoration: underline;
+        }
+        main {
+            padding: 40px 0;
+        }
+        main h2 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        .movie-card {
+            background-color: #242424;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .movie-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .movie-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .movie-card:hover img {
+            transform: scale(1.1);
+        }
+        .movie-card-content {
+            padding: 16px;
+        }
+        .movie-card-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+        }
+        .movie-card-content p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            margin-bottom: 4px;
+        }
+        .movie-card-content .rating {
+            font-size: 1rem;
+            color: #fef08a; /* Yellow */
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        @media (min-width: 640px) {
+            .movie-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 768px) {
+            .movie-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .movie-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            #landing-page h1{
+                font-size: 3rem;
+            }
+            #landing-page p{
+                font-size: 1.2rem;
+            }
+            .form-container{
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <div id="landing-page" class="min-h-screen flex flex-col justify-center items-center">
+        <div class="text-center space-y-6">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">Welcome to CineWorld</h1>
+            <p class="text-lg sm:text-xl md:text-2xl max-w-2xl">Explore a universe of movies. Your ultimate destination for films, reviews, and community.</p>
+            <a href="#login-page"><button id="get-started-btn" class="btn bg-yellow-500 hover:bg-yellow-600 text-gray-900">
+                Get Started
+            </button></a>
+        </div>
+    </div>
+
+    <div id="login-page" class="hidden min-h-screen flex flex-col justify-center items-center">
+        <div class="form-container">
+            <h2 class="text-3xl font-semibold text-white text-center">Login to CineWorld</h2>
+            <input type="email" id="login-email" placeholder="Email Address">
+            <input type="password" id="login-password" placeholder="Password">
+            <a href="#home-page"><button id="login-btn" class="btn bg-blue-500 hover:bg-blue-600 text-white">
+                Login
+            </button></a>
+            <p class="text-gray-400 text-center">Don't have an account? <a href="#signup-page" id="signup-link">Sign up</a></p>
+        </div>
+    </div>
+
+    <div id="signup-page" class="hidden min-h-screen flex flex-col justify-content-center items-center">
+        <div class="form-container">
+            <h2 class="text-3xl font-semibold text-white text-center">Sign Up for CineWorld</h2>
+            <input type="email" id="signup-email" placeholder="Email Address">
+            <input type="password" id="signup-password" placeholder="Password">
+            <input type="password" id="confirm-password" placeholder="Confirm Password">
+            <a href="#home-page"><button id="signup-btn" class="btn bg-green-500 hover:bg-green-600 text-white">
+                Sign Up
+            </button></a>
+            <p class="text-gray-400 text-center">Already have an account? <a href="#login-page" id="login-link-from-signup">Login</a></p>
+        </div>
+    </div>
+
+    <div id="home-page" class="hidden min-h-screen">
+        <header>
+            <div class="container">
+                <h1>CineWorld</h1>
+                <nav>
+                    <a href="#">Movies</a>
+                    <a href="#">Reviews</a>
+                    <a href="#">Community</a>
+                    <a href="#login-page"><button id="logout-btn" class="btn bg-red-500 hover:bg-red-600 text-white">
+                        Logout
+                    </button></a>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            <h2>Featured Movies</h2>
+            <div class="movie-grid">
+                <div class="movie-card">
+                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ8FFJNBaIXvhEwqXXw40rYYDci8jPlYxWfy9082flliYoZ-SqqZjy0az-G5rIWuSJp2pn7xQ" alt="Oppenheimer">
+                    <div class="movie-card-content">
+                        <h3>Oppenheimer</h3>
+                        <p>2023 | Biography, Drama, History</p>
+                        <p class="rating">Rating: 8.4/10</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcROuK_Bl8jrLUP7fo3hsDC4XC2AC1WR1CAXS3G1SVqDPZE0pgFTQKnr8P2_cKmRuXg03nPE" alt="Barbie">
+                    <div class="movie-card-content">
+                        <h3>Barbie</h3>
+                        <p>2023 | Comedy, Fantasy, Romance</p>
+                        <p class="rating">Rating: 7.0/10</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg" alt="The Equalizer 3">
+                    <div class="movie-card-content">
+                        <h3>The Equalizer 3</h3>
+                        <p>2023 | Action, Crime, Thriller</p>
+                        <p class="rating">Rating: 6.8/10</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQJMdX2PF6iwvapJoPpo9QwLzAk0m8BmCbRpiM8XGP3-ggZPtweOj_N6hPgRNN7u1DzKqB_" alt="The Creator">
+                    <div class="movie-card-content">
+                        <h3>The Creator</h3>
+                        <p>2023 | Action, Sci-Fi, Thriller</p>
+                        <p class="rating">Rating: 7.0/10</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://sm.ign.com/t/ign_nordic/cover/a/avengers-e/avengers-endgame_vhzc.300.jpg" alt="Avengers Endgame">
+                    <div class="movie-card-content">
+                        <h3>Avengers Endgame</h3>
+                        <p>2019 | Action, Sci-Fi</p>
+                        <p class="rating">Rating: 8.4/10</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTwJPOxfRiaHwXkICnf6LKMHIPWJPGLx8wht-wZH-qFs0OXXUCBvOeCQTs79z7Bx9odsdsB" alt="Avatar">
+                    <div class="movie-card-content">
+                        <h3>Avatar</h3>
+                        <p>2009 | Action, Sci-Fi</p>
+                        <p class="rating">Rating: 7.9/10</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg" alt="Avengers Infinity War">
+                    <div class="movie-card-content">
+                        <h3>Avengers Infinity War</h3>
+                        <p>2018 | Action, Sci-Fi</p>
+                        <p class="rating">Rating: 8.4/10</p>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5nHjXip-oYHANhJvoUCJ0gqZtjUAimh8abQ&s" alt="Avatar The way of water">
+                    <div class="movie-card-content">
+                        <h3>Avatar The way of water</h3>
+                        <p>2022 | Action, Sci-Fi</p>
+                        <p class="rating">Rating: 7.5/10</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const landingPage = document.getElementById('landing-page');
+        const loginPage = document.getElementById('login-page');
+        const signupPage = document.getElementById('signup-page');
+        const homePage = document.getElementById('home-page');
+
+        const getStartedBtn = document.getElementById('get-started-btn');
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        const signupLink = document.getElementById('signup-link');
+        const loginLinkFromSignup = document.getElementById('login-link-from-signup');
+
+        getStartedBtn.addEventListener('click', () => {
+            landingPage.classList.add('hidden');
+            loginPage.classList.remove('hidden');
+        });
+
+        signupLink.addEventListener('click', () => {
+            loginPage.classList.add('hidden');
+            signupPage.classList.remove('hidden');
+        });
+
+        loginLinkFromSignup.addEventListener('click', () => {
+            signupPage.classList.add('hidden');
+            loginPage.classList.remove('hidden');
+        });
+
+        loginBtn.addEventListener('click', () => {
+            // Simulate login success
+            loginPage.classList.add('hidden');
+            homePage.classList.remove('hidden');
+        });
+
+        signupBtn.addEventListener('click', () => {
+            // Simulate signup success
+            signupPage.classList.add('hidden');
+            homePage.classList.remove('hidden');
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            homePage.classList.add('hidden');
+            landingPage.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
